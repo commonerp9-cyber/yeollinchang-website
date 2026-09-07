@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>열린창 | 공간에 빛을 더하는 창호 솔루션</title>
+<meta name="description" content="열린창은 프리미엄 자재와 정밀 가공 설비로 완성하는 시스템창호 전문 기업입니다.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root {
+    --navy: #16213B;
+    --navy-2: #1F3A5F;
+    --slate: #57687C;
+    --grey: #8B95A1;
+    --bg: #FFFFFF;
+    --bg-soft: #F5F7F9;
+    --cta-bg: #E8EFF3;
+    --ink: #1D2330;
+    --ink-soft: #5B6472;
+    --line: #E4E7EB;
+    --max-w: 1180px;
+    --pad: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+  }
+  .wordmark .mark {
+    width: 30px; height: 30px;
+    border: 2px solid var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.9rem;
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  .nav-links a {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--navy); }
+
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+
+  .btn-pill {
+    background: var(--navy);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.6rem 1.15rem;
+    border-radius: 3px;
+    border: 1px solid var(--navy);
+  }
+  .btn-pill:hover, .btn-pill:focus-visible { background: var(--navy-2); border-color: var(--navy-2); }
+
+  .nav-toggle {
+    display: none;
+    background: none; border: 1px solid var(--line); border-radius: 4px;
+    width: 38px; height: 38px; cursor: pointer;
+    align-items: center; justify-content: center;
+  }
+  .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+    content: ''; display: block; width: 16px; height: 2px; background: var(--navy); position: relative;
+  }
+  .nav-toggle span::before { position: absolute; top: -5px; }
+  .nav-toggle span::after { position: absolute; top: 5px; }
+
+  /* ---------- Hero ---------- */
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    min-height: 480px;
+  }
+  .hero-left {
+    position: relative;
+    background: #b9c9d2;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.72) 40%, rgba(255,255,255,0.05) 75%);
+  }
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    max-width: 560px;
+  }
+  .hero-copy h1 {
+    font-size: clamp(1.6rem, 3vw, 2.15rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    color: var(--navy);
+    margin: 0 0 1rem;
+  }
+  .hero-copy p {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    max-width: 40ch;
+    margin: 0 0 1.5rem;
+  }
+  .hero-right {
+    position: relative;
+    background: #16213b;
+    overflow: hidden;
+  }
+  .hero-right .hero-photo { object-fit: cover; }
+  .hero-overlay-dark {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(22,33,59,0.35) 0%, rgba(22,33,59,0.55) 100%);
+  }
+
+  /* ---------- Stats bar ---------- */
+  .stats-bar {
+    border-bottom: 1px solid var(--line);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 2rem 0;
+  }
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0 1.25rem;
+    border-right: 1px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+  .stat svg { width: 30px; height: 30px; flex-shrink: 0; color: var(--navy-2); }
+  .stat strong {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--navy);
+  }
+  .stat span {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Section base ---------- */
+  section { padding: clamp(3rem, 6vw, 5rem) 0; }
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 2.5rem;
+  }
+
+  /* ---------- Business cards ---------- */
+  .business-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .business-card {
+    padding: 2.25rem 1.75rem;
+    color: #fff;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .business-card .num {
+    font-size: 2.1rem;
+    font-weight: 800;
+    opacity: 0.55;
+  }
+  .business-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0.75rem 0 0.5rem;
+  }
+  .business-card p {
+    font-size: 0.86rem;
+    opacity: 0.85;
+    margin: 0;
+    max-width: 30ch;
+  }
+  .business-card svg { width: 30px; height: 30px; align-self: flex-end; opacity: 0.8; }
+  .business-card.c1 { background: var(--navy-2); }
+  .business-card.c2 { background: var(--slate); }
+  .business-card.c3 { background: var(--grey); }
+
+  /* ---------- Partners ---------- */
+  .partners-section { background: var(--bg-soft); }
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .partner-cell {
+    background: var(--bg-soft);
+    padding: 1.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--grey);
+    letter-spacing: -0.01em;
+  }
+  .partner-quote {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .partner-quote::before, .partner-quote::after { content: '“'; }
+  .partner-quote::after { content: '”'; }
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner { background: var(--cta-bg); }
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .cta-grid h2 {
+    font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    color: var(--navy);
+  }
+  .cta-grid p {
+    color: var(--ink-soft);
+    margin: 0 0 1.5rem;
+    font-size: 0.92rem;
+  }
+  .cta-visual {
+    aspect-ratio: 16/10;
+    border-radius: 4px;
+    background: #dbe6ec;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 3px;
+    background: transparent;
+  }
+  .btn-outline:hover, .btn-outline:focus-visible { background: var(--navy); color: #fff; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--navy);
+    color: #C7CEDA;
+    padding: 3rem 0 1.5rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.8fr 0.8fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .footer-grid h4 {
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+  }
+  .footer-contact p { margin: 0.35rem 0; font-size: 0.85rem; }
+  .footer-links { list-style: none; margin: 0; padding: 0; }
+  .footer-links li { margin: 0.5rem 0; font-size: 0.85rem; }
+  .footer-links a:hover { color: #fff; }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 1.25rem;
+    font-size: 0.78rem;
+    color: #8D97AC;
+  }
+  .footer-bottom a:hover { color: #fff; }
+
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--navy-2); outline-offset: 2px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: #fff; padding: 1rem var(--pad) 1.5rem;
+      border-bottom: 1px solid var(--line); gap: 0.9rem; z-index: 60;
+    }
+    .hero-split { grid-template-columns: 1fr; min-height: unset; }
+    .hero-right { height: 220px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 0; }
+    .stat { border-right: none; padding-left: 0; }
+    .business-grid { grid-template-columns: 1fr; }
+    .partner-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <a href="#top" class="wordmark"><span class="mark">열</span> 열린창</a>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false"><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#top">HOME</a></li>
+      <li><a href="#about">ABOUT US</a></li>
+      <li><a href="#business">PRODUCTS</a></li>
+      <li><a href="#business">MACHINERY</a></li>
+      <li><a href="#partners">PORTFOLIO</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#cta" class="btn-pill">B2C 미리보기</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero-split" style="padding:0;">
+    <div class="hero-left">
+      <img class="hero-photo" src="https://picsum.photos/seed/yeollinchang-room/1000/800" alt="더미 이미지: 추후 실제 인테리어 사진으로 교체 예정">
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <h1>40년의 손끝으로 완성한,<br>공간을 바꾸는 창호 솔루션</h1>
+        <p>프리미엄 자재와 정밀 가공 설비로 만드는 시스템창호. 다양한 기업과 고객이 신뢰하는 열린창입니다.</p>
+        <a href="#contact" class="btn-pill">사업자 문의 및 견적 요청</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img class="hero-photo" src="https://picsum.photos/seed/yeollinchang-machine/800/800" alt="더미 이미지: 추후 실제 설비/제작 현장 사진으로 교체 예정">
+      <div class="hero-overlay-dark" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="stats-bar">
+    <div class="wrap stats-grid">
+      <div class="stat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 14l-5 3 1.2-5.6L4 7.6 9.6 7 12 2z"/></svg>
+        <div><strong>30+ 년</strong><span>업계 경력</span></div>
+      </div>
+      <div class="stat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.3 3-6 7-6s7 2.7 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M22 20c0-2.6-2-4.8-5-5.4"/></svg>
+        <div><strong>1,000+ 개</strong><span>B2B 거래처</span></div>
+      </div>
+      <div class="stat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <div><strong>97%</strong><span>납기 준수율</span></div>
+      </div>
+      <div class="stat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.6 10.8c.6.5.9 1.2.9 2.2h5.4c0-1 .3-1.7.9-2.2A6 6 0 0012 3z"/></svg>
+        <div><strong>40+ 종</strong><span>보유 설비</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="business">
+    <div class="wrap">
+      <h2 class="section-title">3대 핵심 사업</h2>
+      <div class="business-grid">
+        <div class="business-card c1">
+          <span class="num">1.</span>
+          <div>
+            <h3>시스템창호 제작</h3>
+            <p>표준 규격부터 맞춤 제작까지 안정적으로 대응하는 창호 생산 라인.</p>
+          </div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="4" y="4" width="16" height="16"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
+        </div>
+        <div class="business-card c2">
+          <span class="num">2.</span>
+          <div>
+            <h3>프리미엄 자재 소싱</h3>
+            <p>내구성과 디자인을 함께 갖춘 프리미엄 부자재를 공급합니다.</p>
+          </div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><path d="M4 6.5L12 11l8-4.5"/><line x1="12" y1="11" x2="12" y2="20"/></svg>
+        </div>
+        <div class="business-card c3">
+          <span class="num">3.</span>
+          <div>
+            <h3>맞춤형 시공 지원</h3>
+            <p>설치 현장에 최적화된 시공 컨설팅과 사후 관리를 제공합니다.</p>
+          </div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M14 3l7 7-9 9H5v-7l9-9z"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners" class="partners-section">
+    <div class="wrap">
+      <h2 class="section-title">파트너십 &amp; 신뢰</h2>
+      <div class="partner-grid">
+        <div class="partner-cell">한빛건설</div>
+        <div class="partner-cell">소담인테리어</div>
+        <div class="partner-cell">스테이호텔</div>
+        <div class="partner-cell">억산자재</div>
+        <div class="partner-cell">그린홈</div>
+        <div class="partner-cell">코드공간</div>
+        <div class="partner-cell">안온스튜디오</div>
+        <div class="partner-cell">인테리오</div>
+        <div class="partner-cell">담쟁이건축</div>
+        <div class="partner-cell">라움디자인</div>
+      </div>
+      <p class="partner-quote">오랜 시간 쌓아온 신뢰, 흔들리지 않는 품질</p>
+    </div>
+  </section>
+
+  <section id="cta" class="cta-banner">
+    <div class="wrap cta-grid">
+      <div>
+        <h2>B2C 맞춤형 서비스, 곧 만나보실 수 있습니다</h2>
+        <p>가정용 맞춤 상담 서비스를 준비하고 있습니다. 오픈 소식을 가장 먼저 받아보세요.</p>
+        <a href="#contact" class="btn-outline">오픈 소식 받아보기 &gt;</a>
+      </div>
+      <div class="cta-visual">
+        <img class="cta-photo" src="https://picsum.photos/seed/yeollinchang-livingroom/800/500" alt="더미 이미지: 추후 실제 거실/쇼룸 사진으로 교체 예정">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-contact">
+        <h4>고객 문의 안내</h4>
+        <p>서울시 성동구 성수동 (예시)</p>
+        <p>Tel: 02-1234-5678</p>
+        <p>Email: hello@yeollinchang.example</p>
+      </div>
+      <div>
+        <h4>ABOUT US</h4>
+        <ul class="footer-links">
+          <li><a href="#about">회사소개</a></li>
+          <li><a href="#business">사업분야</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>B2B</h4>
+        <ul class="footer-links">
+          <li><a href="#contact">거래 문의</a></li>
+          <li><a href="#contact">견적 요청</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 열린창. All Rights Reserved.</span>
+      <span><a href="#">이용약관</a> | <a href="#">개인정보처리방침</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
