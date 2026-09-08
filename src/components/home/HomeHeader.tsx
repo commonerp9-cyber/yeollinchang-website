@@ -10,7 +10,7 @@ export function HomeHeader() {
     <header>
       <div className="wrap nav-row">
         <a href="#top" className="wordmark" onClick={close}>
-          <span className="mark">열</span> 열린창
+          <img src="/images/logo.png" alt="열린창" className="wordmark-logo" />
         </a>
         <button
           className="nav-toggle"
