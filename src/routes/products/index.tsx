@@ -2,7 +2,7 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useEffect, useMemo, useState } from 'react'
 import products, { categories } from '@/data/products'
 import type { Category } from '@/data/products'
-import { ProductControls, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
+import { ProductControls, SearchBox, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
 import { HomeHeader } from '@/components/home/HomeHeader'
 import { HomeFooter } from '@/components/home/HomeFooter'
 
@@ -118,6 +118,7 @@ function ProductsIndex() {
             onSelect={handleSelect}
             variant="flyout"
           />
+          <SearchBox query={query} onQueryChange={setQuery} />
         </aside>
 
         <MobileNavOverlay
