@@ -67,6 +67,10 @@ function ProductsIndex() {
   // routing on every keystroke breaks Korean/Japanese/Chinese IME composition.
   const [query, setQuery] = useState(search.q ?? '')
 
+  // The actual filtering/URL-sync value only updates after the user pauses
+  // typing for a moment, so results don't flicker on every keystroke.
+  const [debouncedQuery, setDebouncedQuery] = useState(search.q ?? '')
+
   const activeCategory = (search.category as Category | undefined) ?? 'all'
   const activeSubcategory = search.subcategory ?? null
   const activeMinicategory = search.mini ?? null
@@ -75,19 +79,22 @@ function ProductsIndex() {
   // (e.g. browser back/forward).
   useEffect(() => {
     setQuery(search.q ?? '')
+    setDebouncedQuery(search.q ?? '')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search.q])
 
-  // Sync the query into the URL after the user pauses typing, so search
-  // results stay bookmarkable/shareable without disrupting IME input.
+  // Wait for a pause in typing before updating results and syncing the URL,
+  // so search results stay bookmarkable/shareable without disrupting IME
+  // input or re-filtering mid-word.
   useEffect(() => {
     const timer = setTimeout(() => {
+      setDebouncedQuery(query)
       navigate({
         search: (prev) => ({ ...prev, q: query || undefined }),
         replace: true,
         resetScroll: false,
       })
-    }, 400)
+    }, 600)
     return () => clearTimeout(timer)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
@@ -108,7 +115,7 @@ function ProductsIndex() {
   }
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
+    const q = debouncedQuery.trim().toLowerCase()
     return products.filter((product) => {
       const matchesCategory =
         activeCategory === 'all' || product.category === activeCategory
@@ -124,7 +131,7 @@ function ProductsIndex() {
         matchesCategory && matchesSubcategory && matchesMinicategory && matchesQuery
       )
     })
-  }, [query, activeCategory, activeSubcategory, activeMinicategory])
+  }, [debouncedQuery, activeCategory, activeSubcategory, activeMinicategory])
 
   return (
     <div className="min-h-screen bg-white">
