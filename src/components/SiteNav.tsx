@@ -1,4 +1,3 @@
-import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState } from 'react'
 import {
   ChevronDown,
@@ -10,7 +9,7 @@ import {
 import { categories, subcategories, minicategories } from '@/data/products'
 import type { Category } from '@/data/products'
 
-export function Header({
+export function ProductControls({
   query,
   onQueryChange,
   onMenuOpen,
@@ -20,35 +19,29 @@ export function Header({
   onMenuOpen: () => void
 }) {
   return (
-    <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-[var(--color-border)]">
-      <div className="wrap flex items-center gap-4 py-4">
-        <Link to="/" className="shrink-0">
-          <img src="/images/logo.png" alt="열린창" className="wordmark-logo" />
-        </Link>
-
-        <div className="flex-1 max-w-md ml-auto relative">
-          <Search
-            size={18}
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-taupe)]"
-          />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => onQueryChange(e.target.value)}
-            placeholder="제품명을 검색해보세요"
-            className="w-full rounded-full border border-[var(--color-border)] bg-[var(--color-linen)] py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[var(--color-clay)] transition-colors"
-          />
-        </div>
-
-        <button
-          onClick={onMenuOpen}
-          className="lg:hidden shrink-0 flex items-center gap-1.5 rounded-full border border-[var(--color-border)] px-4 py-2.5 text-sm text-[var(--color-ink)]"
-        >
-          <SlidersHorizontal size={16} />
-          메뉴
-        </button>
+    <div className="flex items-center gap-4 mb-8 md:mb-10">
+      <div className="flex-1 max-w-md relative">
+        <Search
+          size={18}
+          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-taupe)]"
+        />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => onQueryChange(e.target.value)}
+          placeholder="제품명을 검색해보세요"
+          className="w-full rounded-full border border-[var(--color-border)] bg-[var(--color-linen)] py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[var(--color-clay)] transition-colors"
+        />
       </div>
-    </header>
+
+      <button
+        onClick={onMenuOpen}
+        className="lg:hidden shrink-0 flex items-center gap-1.5 rounded-full border border-[var(--color-border)] px-4 py-2.5 text-sm text-[var(--color-ink)]"
+      >
+        <SlidersHorizontal size={16} />
+        메뉴
+      </button>
+    </div>
   )
 }
 
