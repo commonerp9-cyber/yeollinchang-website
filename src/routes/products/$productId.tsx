@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react'
 import products, { categories } from '../../data/products'
 import type { Category } from '../../data/products'
 import { Header, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
-import { CatalogFooter } from '@/components/CatalogFooter'
+import { HomeFooter } from '@/components/home/HomeFooter'
 
 export const Route = createFileRoute('/products/$productId')({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -152,7 +152,7 @@ function RouteComponent() {
           </div>
         </main>
       </div>
-      <CatalogFooter />
+      <HomeFooter />
     </div>
   )
 }
