@@ -85,6 +85,7 @@ function ProductsIndex() {
       navigate({
         search: (prev) => ({ ...prev, q: query || undefined }),
         replace: true,
+        resetScroll: false,
       })
     }, 400)
     return () => clearTimeout(timer)
