@@ -7,11 +7,17 @@ import { ProductControls, SearchBox, NavPanel, MobileNavOverlay } from '@/compon
 import { HomeHeader } from '@/components/home/HomeHeader'
 import { HomeFooter } from '@/components/home/HomeFooter'
 
+interface ProductDetailSearch {
+  category?: string
+  subcategory?: string
+  mini?: string
+}
+
 export const Route = createFileRoute('/products/$productId')({
-  validateSearch: (search: Record<string, unknown>) => ({
-    category: (search.category as string | undefined) ?? undefined,
-    subcategory: (search.subcategory as string | undefined) ?? undefined,
-    mini: (search.mini as string | undefined) ?? undefined,
+  validateSearch: (search: Record<string, unknown>): ProductDetailSearch => ({
+    category: search.category as string | undefined,
+    subcategory: search.subcategory as string | undefined,
+    mini: search.mini as string | undefined,
   }),
   component: RouteComponent,
   loader: async ({ params }) => {
@@ -58,9 +64,12 @@ function RouteComponent() {
 
   const handleQueryChange = (value: string) => {
     setQueryState(value)
+  }
+
+  const submitQuery = () => {
     navigate({
       to: '/products',
-      search: { q: value || undefined },
+      search: { q: query || undefined },
     })
   }
 
@@ -70,14 +79,20 @@ function RouteComponent() {
 
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-10 md:py-14 lg:flex lg:gap-12 lg:flex-row-reverse">
         <aside className="hidden lg:block w-56 shrink-0">
-          <NavPanel
-            activeCategory={activeCategory}
-            activeSubcategory={activeSubcategory}
-            activeMinicategory={activeMinicategory}
-            onSelect={goToCatalog}
-            variant="flyout"
-          />
-          <SearchBox query={query} onQueryChange={handleQueryChange} />
+          <div className="lg:sticky lg:top-24">
+            <NavPanel
+              activeCategory={activeCategory}
+              activeSubcategory={activeSubcategory}
+              activeMinicategory={activeMinicategory}
+              onSelect={goToCatalog}
+              variant="flyout"
+            />
+            <SearchBox
+              query={query}
+              onQueryChange={handleQueryChange}
+              onSubmit={submitQuery}
+            />
+          </div>
         </aside>
 
         <MobileNavOverlay
@@ -94,6 +109,7 @@ function RouteComponent() {
             query={query}
             onQueryChange={handleQueryChange}
             onMenuOpen={() => setNavOpen(true)}
+            onSubmit={submitQuery}
           />
 
           <Link
