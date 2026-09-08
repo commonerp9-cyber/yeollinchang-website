@@ -22,11 +22,8 @@ export function Header({
   return (
     <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-[var(--color-border)]">
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center gap-4">
-        <Link
-          to="/"
-          className="font-display text-2xl md:text-3xl text-[var(--color-clay-dark)] shrink-0"
-        >
-          열린창 커튼
+        <Link to="/" className="shrink-0">
+          <img src="/images/logo.png" alt="열린창" className="wordmark-logo" />
         </Link>
 
         <div className="flex-1 max-w-md ml-auto relative">
