@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import products, { categories } from '@/data/products'
 import type { Category } from '@/data/products'
 import { Header, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
-import { CatalogFooter } from '@/components/CatalogFooter'
+import { HomeFooter } from '@/components/home/HomeFooter'
 
 export const Route = createFileRoute('/products/')({
   head: () => ({
@@ -193,7 +193,7 @@ function ProductsIndex() {
           )}
         </main>
       </div>
-      <CatalogFooter />
+      <HomeFooter />
     </div>
   )
 }
