@@ -1,13 +1,43 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>열린창 | 공간에 빛을 더하는 커튼 솔루션</title>
-<meta name="description" content="열린창은 프리미엄 원단과 정밀 가공 설비로 완성하는 커튼 전문 기업입니다.">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<style>
+@import "tailwindcss" source("../");
+
+:root {
+  --color-linen: #F5F7F9;
+  --color-clay: #1F3A5F;
+  --color-clay-dark: #16213B;
+  --color-ink: #1D2330;
+  --color-taupe: #5B6472;
+  --color-border: #E4E7EB;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family:
+    'Pretendard',
+    -apple-system,
+    'Apple SD Gothic Neo',
+    'Malgun Gothic',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+code {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+::selection {
+  background: var(--color-clay);
+  color: #fff;
+}
+
+/* ===== Home page (yeollinchang-website design) ===== */
   :root {
     --navy: #16213B;
     --navy-2: #1F3A5F;
@@ -123,7 +153,7 @@
     background: #b9c9d2;
     display: flex;
     align-items: center;
-    /* justify-content: flex-start;  /* implicit default — pushes content to the left edge */ */
+    justify-content: center;
     overflow: hidden;
   }
   .hero-photo {
@@ -413,185 +443,3 @@
     .cta-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
   }
-</style>
-</head>
-<body>
-
-<header>
-  <div class="wrap nav-row">
-    <a href="#top" class="wordmark"><span class="mark">열</span> 열린창</a>
-    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false"><span></span></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#top">홈</a></li>
-      <li><a href="#about">회사소개</a></li>
-      <li><a href="#business">제품</a></li>
-      <li><a href="#business">설비</a></li>
-      <li><a href="#partners">포트폴리오</a></li>
-      <li><a href="#contact">문의</a></li>
-    </ul>
-    <div class="nav-right">
-      <a href="#cta" class="btn-pill">B2C 미리보기</a>
-    </div>
-  </div>
-</header>
-
-<main id="top">
-
-  <section class="hero-split" style="padding:0;">
-    <div class="hero-left">
-      <img class="hero-photo" src="images/hero-room.jpg" alt="린넨 암막 커튼이 설치된 거실 인테리어">
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-copy">
-        <h1>유서 깊은 정통성,<br>공간에 가치를 더하는 커튼 솔루션</h1>
-        <p>30년의 노하우를 투자한 프리미엄 원단과 정밀 가공 설비로 만드는 규격맞춤창. 다양한 기업과 고객이 신뢰하는 열린창입니다.</p>
-        <a href="#contact" class="btn-pill">사업자 문의 및 견적 요청</a>
-      </div>
-    </div>
-    <div class="hero-right">
-      <img class="hero-photo" src="images/hero-machine.jpg" alt="커튼 원단 재단 자동화 설비">
-      <div class="hero-overlay-dark" aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <section class="stats-section">
-    <div class="wrap">
-      <div class="stats-card">
-        <div class="stats-label">주요 성과</div>
-        <div class="stats-divider"></div>
-        <div class="stat">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 14l-5 3 1.2-5.6L4 7.6 9.6 7 12 2z"/></svg>
-          <div><strong>30+ 년</strong><span>업계 경력</span></div>
-        </div>
-        <div class="stats-divider"></div>
-        <div class="stat">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.3 3-6 7-6s7 2.7 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M22 20c0-2.6-2-4.8-5-5.4"/></svg>
-          <div><strong>1,000+ 개</strong><span>B2B 거래처</span></div>
-        </div>
-        <div class="stats-divider"></div>
-        <div class="stat">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-          <div><strong>국내 최대 규모</strong><span>보유 설비</span></div>
-        </div>
-        <div class="stats-divider"></div>
-        <div class="stat">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.6 10.8c.6.5.9 1.2.9 2.2h5.4c0-1 .3-1.7.9-2.2A6 6 0 0012 3z"/></svg>
-          <div><strong>150+</strong><span>특허 및 설비</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="business">
-    <div class="wrap">
-      <h2 class="section-title">3대 핵심 사업</h2>
-      <div class="business-grid">
-        <div class="business-card c1">
-          <span class="num">1.</span>
-          <div>
-            <h3>커튼 제작 기계</h3>
-            <p>생산 효율과 완벽한 핏을 완성하는 독자적 자동화 설비 공급</p>
-          </div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="4" y="4" width="16" height="16"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
-        </div>
-        <div class="business-card c2">
-          <span class="num">2.</span>
-          <div>
-            <h3>프리미엄 소재</h3>
-            <p>높은 내구성과 완성도를 자랑하는 커튼 하드웨어 & 부자재</p>
-          </div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><path d="M4 6.5L12 11l8-4.5"/><line x1="12" y1="11" x2="12" y2="20"/></svg>
-        </div>
-        <div class="business-card c3">
-          <span class="num">3.</span>
-          <div>
-            <h3>로얄 형상 가공</h3>
-            <p>일상에 가치와 아름다움을 더하는 형상 작업기 판매</p>
-          </div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M14 3l7 7-9 9H5v-7l9-9z"/></svg>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="partners" class="partners-section">
-    <div class="wrap">
-      <h2 class="section-title">파트너십 &amp; 신뢰</h2>
-      <div class="partner-grid">
-        <div class="partner-cell">이지스 블라인드</div>
-        <div class="partner-cell">한솔IMB</div>
-        <div class="partner-cell">에스엠(SM)</div>
-        <div class="partner-cell">커튼뱅크</div>
-        <div class="partner-cell">모두온타일</div>
-        <div class="partner-cell">주식회사 온플랫</div>
-        <div class="partner-cell">아라크네</div>
-        <div class="partner-cell">남도실업</div>
-        <div class="partner-cell">주식회사 해동</div>
-        <div class="partner-cell">한샘</div>
-      </div>
-      <p class="partner-quote">오랜 시간 쌓아온 신뢰, 일관된 품질과 기능</p>
-    </div>
-  </section>
-
-  <section id="cta" class="cta-banner">
-    <div class="wrap cta-grid">
-      <div>
-        <h2>B2C 맞춤형 서비스, 곧 만나보실 수 있습니다</h2>
-        <p>고객님을 위한 맞춤 상담 서비스를 준비하고 있습니다. 오픈 소식을 가장 먼저 받아보세요.</p>
-        <a href="#contact" class="btn-outline">오픈 소식 받아보기 &gt;</a>
-      </div>
-      <div class="cta-visual">
-        <img class="cta-photo" src="images/bottom-image.jpg" alt="더미 이미지: 추후 실제 거실/쇼룸 사진으로 교체 예정">
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer id="contact">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-contact">
-        <h4>고객 문의 안내</h4>
-        <p>경기도 광주시 순암로 367-48 (중대동) A, B동</p>
-        <p>Tel: (031)797-0208</p>
-        <p>Email: yeollinchang@naver.com</p>
-      </div>
-      <div>
-        <h4>ABOUT US</h4>
-        <ul class="footer-links">
-          <li><a href="#about">회사소개</a></li>
-          <li><a href="#business">사업분야</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>B2B</h4>
-        <ul class="footer-links">
-          <li><a href="#contact">거래 문의</a></li>
-          <li><a href="#contact">견적 요청</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 열린창. All Rights Reserved.</span>
-      <span><a href="#">이용약관</a> | <a href="#">개인정보처리방침</a></span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-</script>
-
-</body>
-</html>
