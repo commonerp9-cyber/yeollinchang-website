@@ -12,9 +12,11 @@ import type { Category } from '@/data/products'
 export function SearchBox({
   query,
   onQueryChange,
+  onSubmit,
 }: {
   query: string
   onQueryChange: (value: string) => void
+  onSubmit?: () => void
 }) {
   return (
     <div className="mt-6 pt-6 border-t border-[var(--color-border)]">
@@ -30,6 +32,9 @@ export function SearchBox({
           type="text"
           value={query}
           onChange={(e) => onQueryChange(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') onSubmit?.()
+          }}
           placeholder="제품명을 검색해보세요"
           className="w-full rounded-full border border-[var(--color-border)] bg-[var(--color-linen)] py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[var(--color-clay)] transition-colors"
         />
@@ -42,10 +47,12 @@ export function ProductControls({
   query,
   onQueryChange,
   onMenuOpen,
+  onSubmit,
 }: {
   query: string
   onQueryChange: (value: string) => void
   onMenuOpen: () => void
+  onSubmit?: () => void
 }) {
   return (
     <div className="flex lg:hidden items-center gap-4 mb-8 md:mb-10">
@@ -58,6 +65,9 @@ export function ProductControls({
           type="text"
           value={query}
           onChange={(e) => onQueryChange(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') onSubmit?.()
+          }}
           placeholder="제품명을 검색해보세요"
           className="w-full rounded-full border border-[var(--color-border)] bg-[var(--color-linen)] py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[var(--color-clay)] transition-colors"
         />
@@ -176,7 +186,7 @@ export function NavPanel({
   }
 
   return (
-    <nav className="lg:sticky lg:top-24">
+    <nav>
       <p className="text-xs font-semibold text-[var(--color-taupe)] mb-4 tracking-wide">
         카테고리
       </p>
