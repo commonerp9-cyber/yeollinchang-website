@@ -6,6 +6,13 @@ import { ProductControls, SearchBox, NavPanel, MobileNavOverlay } from '@/compon
 import { HomeHeader } from '@/components/home/HomeHeader'
 import { HomeFooter } from '@/components/home/HomeFooter'
 
+interface ProductsSearch {
+  category?: string
+  subcategory?: string
+  mini?: string
+  q?: string
+}
+
 export const Route = createFileRoute('/products/')({
   head: () => ({
     meta: [
@@ -19,11 +26,11 @@ export const Route = createFileRoute('/products/')({
       },
     ],
   }),
-  validateSearch: (search: Record<string, unknown>) => ({
-    category: (search.category as string | undefined) ?? undefined,
-    subcategory: (search.subcategory as string | undefined) ?? undefined,
-    mini: (search.mini as string | undefined) ?? undefined,
-    q: (search.q as string | undefined) ?? undefined,
+  validateSearch: (search: Record<string, unknown>): ProductsSearch => ({
+    category: search.category as string | undefined,
+    subcategory: search.subcategory as string | undefined,
+    mini: search.mini as string | undefined,
+    q: search.q as string | undefined,
   }),
   component: ProductsIndex,
 })
@@ -56,17 +63,33 @@ function ProductsIndex() {
   const navigate = Route.useNavigate()
   const [navOpen, setNavOpen] = useState(false)
 
-  const query = search.q ?? ''
+  // The search text lives in local state so typing is never interrupted —
+  // routing on every keystroke breaks Korean/Japanese/Chinese IME composition.
+  const [query, setQuery] = useState(search.q ?? '')
+
   const activeCategory = (search.category as Category | undefined) ?? 'all'
   const activeSubcategory = search.subcategory ?? null
   const activeMinicategory = search.mini ?? null
 
-  const setQuery = (value: string) => {
-    navigate({
-      search: (prev) => ({ ...prev, q: value || undefined }),
-      replace: true,
-    })
-  }
+  // Keep local state in sync if the URL's q changes from elsewhere
+  // (e.g. browser back/forward).
+  useEffect(() => {
+    setQuery(search.q ?? '')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search.q])
+
+  // Sync the query into the URL after the user pauses typing, so search
+  // results stay bookmarkable/shareable without disrupting IME input.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate({
+        search: (prev) => ({ ...prev, q: query || undefined }),
+        replace: true,
+      })
+    }, 400)
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query])
 
   const handleSelect = (
     category: Category | 'all',
@@ -111,14 +134,16 @@ function ProductsIndex() {
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-10 md:py-14 lg:flex lg:gap-12 lg:flex-row-reverse">
         {/* Right-side navigation / filter panel */}
         <aside className="hidden lg:block w-56 shrink-0">
-          <NavPanel
-            activeCategory={activeCategory}
-            activeSubcategory={activeSubcategory}
-            activeMinicategory={activeMinicategory}
-            onSelect={handleSelect}
-            variant="flyout"
-          />
-          <SearchBox query={query} onQueryChange={setQuery} />
+          <div className="lg:sticky lg:top-24">
+            <NavPanel
+              activeCategory={activeCategory}
+              activeSubcategory={activeSubcategory}
+              activeMinicategory={activeMinicategory}
+              onSelect={handleSelect}
+              variant="flyout"
+            />
+            <SearchBox query={query} onQueryChange={setQuery} />
+          </div>
         </aside>
 
         <MobileNavOverlay
