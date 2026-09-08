@@ -267,7 +267,7 @@ code {
     color: var(--ink-soft);
     max-width: 56ch;
     margin: 0 auto 3rem;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 
   /* ---------- Business cards ---------- */
