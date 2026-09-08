@@ -1,3 +1,5 @@
+import { Link } from '@tanstack/react-router'
+
 export function HomeFooter() {
   return (
     <footer id="contact">
@@ -13,10 +15,12 @@ export function HomeFooter() {
             <h4>ABOUT US</h4>
             <ul className="footer-links">
               <li>
-                <a href="#about">회사소개</a>
+                <Link to="/about">회사소개</Link>
               </li>
               <li>
-                <a href="#business">사업분야</a>
+                <Link to="/" hash="business">
+                  사업분야
+                </Link>
               </li>
             </ul>
           </div>
@@ -24,10 +28,14 @@ export function HomeFooter() {
             <h4>B2B</h4>
             <ul className="footer-links">
               <li>
-                <a href="#contact">거래 문의</a>
+                <Link to="/" hash="contact">
+                  거래 문의
+                </Link>
               </li>
               <li>
-                <a href="#contact">견적 요청</a>
+                <Link to="/" hash="contact">
+                  견적 요청
+                </Link>
               </li>
             </ul>
           </div>
