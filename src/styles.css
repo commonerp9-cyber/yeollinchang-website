@@ -96,12 +96,10 @@ code {
     letter-spacing: -0.01em;
     color: var(--navy);
   }
-  .wordmark .mark {
-    width: 30px; height: 30px;
-    border: 2px solid var(--navy);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.85rem;
-    flex-shrink: 0;
+  .wordmark-logo {
+    height: 34px;
+    width: auto;
+    display: block;
   }
   .nav-links {
     display: flex;
