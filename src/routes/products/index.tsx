@@ -2,7 +2,8 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useEffect, useMemo, useState } from 'react'
 import products, { categories } from '@/data/products'
 import type { Category } from '@/data/products'
-import { Header, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
+import { ProductControls, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
+import { HomeHeader } from '@/components/home/HomeHeader'
 import { HomeFooter } from '@/components/home/HomeFooter'
 
 export const Route = createFileRoute('/products/')({
@@ -103,7 +104,7 @@ function ProductsIndex() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header query={query} onQueryChange={setQuery} onMenuOpen={() => setNavOpen(true)} />
+      <HomeHeader />
 
       <HeroCarousel />
 
@@ -130,6 +131,12 @@ function ProductsIndex() {
 
         {/* Main content */}
         <main className="flex-1 min-w-0">
+          <ProductControls
+            query={query}
+            onQueryChange={setQuery}
+            onMenuOpen={() => setNavOpen(true)}
+          />
+
           <div className="mb-10 md:mb-14">
             <p className="text-sm text-[var(--color-clay-dark)] font-medium mb-2">
               PRODUCT CATALOG

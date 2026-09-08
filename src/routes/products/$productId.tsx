@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import products, { categories } from '../../data/products'
 import type { Category } from '../../data/products'
-import { Header, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
+import { ProductControls, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
+import { HomeHeader } from '@/components/home/HomeHeader'
 import { HomeFooter } from '@/components/home/HomeFooter'
 
 export const Route = createFileRoute('/products/$productId')({
@@ -65,11 +66,7 @@ function RouteComponent() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header
-        query={query}
-        onQueryChange={handleQueryChange}
-        onMenuOpen={() => setNavOpen(true)}
-      />
+      <HomeHeader />
 
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-10 md:py-14 lg:flex lg:gap-12 lg:flex-row-reverse">
         <aside className="hidden lg:block w-56 shrink-0">
@@ -92,6 +89,12 @@ function RouteComponent() {
         />
 
         <main className="flex-1 min-w-0">
+          <ProductControls
+            query={query}
+            onQueryChange={handleQueryChange}
+            onMenuOpen={() => setNavOpen(true)}
+          />
+
           <Link
             to="/products"
             search={{
