@@ -15,8 +15,8 @@ export function CtaBanner() {
         <div className="cta-visual">
           <img
             className="cta-photo"
-            src="https://images.unsplash.com/photo-1701656626593-9bd552f4ceb2?fm=jpg&q=80&w=800&h=500&fit=crop&auto=format"
-            alt="더미 이미지: 추후 실제 거실/쇼룸 사진으로 교체 예정"
+            src="/images/bottom-image.jpg"
+            alt="열린창 고객 맞춤 서비스 사진"
           />
         </div>
       </div>
