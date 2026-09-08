@@ -9,9 +9,9 @@ export function HomeHeader() {
   return (
     <header>
       <div className="wrap nav-row">
-        <a href="#top" className="wordmark" onClick={close}>
+        <Link to="/" className="wordmark" onClick={close}>
           <img src="/images/logo.png" alt="열린창" className="wordmark-logo" />
-        </a>
+        </Link>
         <button
           className="nav-toggle"
           aria-label="메뉴 열기"
@@ -22,14 +22,14 @@ export function HomeHeader() {
         </button>
         <ul className={`nav-links${open ? ' open' : ''}`}>
           <li>
-            <a href="#top" onClick={close}>
+            <Link to="/" onClick={close}>
               홈
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#about" onClick={close}>
+            <Link to="/about" onClick={close}>
               회사소개
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/products" onClick={close}>
@@ -42,20 +42,20 @@ export function HomeHeader() {
             </Link>
           </li>
           <li>
-            <a href="#partners" onClick={close}>
+            <Link to="/" hash="partners" onClick={close}>
               포트폴리오
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#contact" onClick={close}>
+            <Link to="/" hash="contact" onClick={close}>
               문의
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="nav-right">
-          <a href="#cta" className="btn-pill">
+          <Link to="/" hash="cta" className="btn-pill">
             B2C 미리보기
-          </a>
+          </Link>
         </div>
       </div>
     </header>
