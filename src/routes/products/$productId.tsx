@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import products, { categories } from '../../data/products'
 import type { Category } from '../../data/products'
-import { ProductControls, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
+import { ProductControls, SearchBox, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
 import { HomeHeader } from '@/components/home/HomeHeader'
 import { HomeFooter } from '@/components/home/HomeFooter'
 
@@ -77,6 +77,7 @@ function RouteComponent() {
             onSelect={goToCatalog}
             variant="flyout"
           />
+          <SearchBox query={query} onQueryChange={handleQueryChange} />
         </aside>
 
         <MobileNavOverlay
