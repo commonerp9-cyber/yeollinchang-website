@@ -73,7 +73,11 @@ const products: Array<Product> = [
     category: 'curtain',
     subcategory: '암막커튼',
     minicategory: '포레스트',
-    images: ['/placeholder.png'],
+    images: ['public/images/products/5/main.jpg',
+		'public/images/products/5/2.jpg',
+		'public/images/products/5/3.jpg',
+		'public/images/products/5/4.jpg',
+		'public/images/products/5/5.jpg'],
     shortDescription: '빛을 완벽히 차단하는 프리미엄 암막 커튼',
     description:
       '침실과 홈시네마에 적합한 고밀도 암막 원단으로, 외부 빛과 열을 효과적으로 차단합니다.',
