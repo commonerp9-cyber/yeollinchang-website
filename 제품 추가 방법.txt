@@ -12,14 +12,16 @@ images: ['public/images/products/5/main.jpg'],
 
 // or with multiple photos for the gallery — order = gallery order, first = grid thumbnail too (여러개의 사진을 추가할 때 이렇게 작성하시오)
 images: [
-  'public/images/products/5/main.jpg',
-  'public/images/products/5/2.jpg',
-  'public/images/products/5/3.jpg',
-  'public/images/products/5/4.jpg',
+  'public/images/products/제품번호/main.jpg',
+  'public/images/products/제품번호/2.jpg',
+  'public/images/products/제품번호/3.jpg',
+  'public/images/products/제품번호/4.jpg',
 ],
 
 // after
 src/data/products.ts 에다가 직접 입력
+
+(예시)
 images: [
   'public/images/products/5/main.jpg',
   'public/images/products/5/2.jpg',

@@ -221,7 +221,11 @@ const products: Array<Product> = [
     category: 'curtain',
     subcategory: '쉬어커튼',
     minicategory: '미뉴엣',
-    images: ['/placeholder.png'],
+    images: ['/images/products/11/main.jpg',
+		'/images/products/11/2.jpg',
+		'/images/products/11/3.jpg',
+		'/images/products/11/4.jpg',
+		'/images/products/11/5.jpg'],
     shortDescription: '자연광을 부드럽게 담아내는 시어 커튼',
     description:
       '얇고 가벼운 시어 원단으로 채광을 살리면서도 은은한 프라이버시를 지켜줍니다.',
