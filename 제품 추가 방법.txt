@@ -1,0 +1,13 @@
+// before (추가 전 혹은 임의로 사진을 추가할 거라면)
+images: ['/placeholder.png'],
+
+// after (추가 후 썸네일은 이렇게 작성하시오)
+images: ['public/images/products/5/main.jpg'],
+
+// or with multiple photos for the gallery — order = gallery order, first = grid thumbnail too (여러개의 사진을 추가할 때 이렇게 작성하시오)
+images: [
+  'public/images/products/5/main.jpg',
+  'public/images/products/5/2.jpg',
+  'public/images/products/5/3.jpg',
+  'public/images/products/5/4.jpg',
+],
