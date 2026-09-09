@@ -207,7 +207,7 @@ function ProductsIndex() {
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-[var(--color-linen)]">
                     <img
-                      src={product.image}
+                      src={product.images[0]}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
