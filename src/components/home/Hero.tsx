@@ -1,7 +1,7 @@
 import { HeroSlideshow } from './HeroSlideshow'
 
 const roomSlides = [
-  { src: '/images/hero-room.jpg', alt: '린넨 암막 커튼이 설치된 거실 인테리어' },
+  { src: '/images/site/hero-room.jpg', alt: '누베아 베이지 커튼이 설치된 거실 인테리어' },
   { src: '/images/curtain-room-beige.jpg', alt: '베이지 톤 커튼이 설치된 거실' },
   { src: '/images/curtain-room-blue.jpg', alt: '블루 톤 커튼이 설치된 거실' },
   { src: '/images/curtain-room-brown.jpg', alt: '브라운 톤 커튼이 설치된 거실' },
@@ -9,10 +9,10 @@ const roomSlides = [
 ]
 
 const machineSlides = [
-  { src: '/images/hero-machine.jpg', alt: '커튼 원단 재단 자동화 설비' },
-  { src: '/images/hero-machine2.jpg', alt: '커튼 제작 설비 현장 사진 2' },
-  { src: '/images/hero-machine3.jpg', alt: '커튼 제작 설비 현장 사진 3' },
-  { src: '/images/hero-machine4.jpg', alt: '커튼 제작 설비 현장 사진 4' },
+  { src: '/images/site/hero-machine.jpg', alt: '커튼 원단 재단 자동화 설비' },
+  { src: '/images/site/hero-machine2.jpg', alt: '커튼 제작 설비 현장 사진 2' },
+  { src: '/images/site/hero-machine3.jpg', alt: '커튼 제작 설비 현장 사진 3' },
+  { src: '/images/site/hero-machine4.jpg', alt: '커튼 제작 설비 현장 사진 4' },
 ]
 
 export function Hero() {
