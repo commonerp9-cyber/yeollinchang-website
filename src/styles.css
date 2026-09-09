@@ -403,13 +403,13 @@ code {
   }
   .footer-grid h4 {
     color: #fff;
-    font-size: 0.95rem;
+    font-size: 1.25rem;
     font-weight: 700;
     margin: 0 0 1rem;
   }
-  .footer-contact p { margin: 0.35rem 0; font-size: 0.85rem; }
+  .footer-contact p { margin: 0.35rem 0; font-size: 1.1rem; }
   .footer-links { list-style: none; margin: 0; padding: 0; }
-  .footer-links li { margin: 0.5rem 0; font-size: 0.85rem; }
+  .footer-links li { margin: 0.5rem 0; font-size: 1.1rem; }
   .footer-links a:hover { color: #fff; }
   .footer-bottom {
     display: flex;
