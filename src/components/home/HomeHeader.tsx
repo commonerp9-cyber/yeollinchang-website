@@ -42,11 +42,6 @@ export function HomeHeader() {
             </Link>
           </li>
           <li>
-            <Link to="/" hash="partners" onClick={close}>
-              포트폴리오
-            </Link>
-          </li>
-          <li>
             <Link to="/" hash="contact" onClick={close}>
               문의
             </Link>
