@@ -15,7 +15,7 @@ export function CtaBanner() {
         <div className="cta-visual">
           <img
             className="cta-photo"
-            src="/images/bottom-image.jpg"
+            src="/images/site/bottom-image.jpg"
             alt="열린창 고객 맞춤 서비스 사진"
           />
         </div>
