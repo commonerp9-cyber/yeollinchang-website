@@ -2,8 +2,16 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useEffect, useMemo, useState } from 'react'
 import products, { categories } from '@/data/products'
 import type { Category } from '@/data/products'
-import { Header, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
-import { CatalogFooter } from '@/components/CatalogFooter'
+import { ProductControls, SearchBox, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
+import { HomeHeader } from '@/components/home/HomeHeader'
+import { HomeFooter } from '@/components/home/HomeFooter'
+
+interface ProductsSearch {
+  category?: string
+  subcategory?: string
+  mini?: string
+  q?: string
+}
 
 export const Route = createFileRoute('/products/')({
   head: () => ({
@@ -18,11 +26,11 @@ export const Route = createFileRoute('/products/')({
       },
     ],
   }),
-  validateSearch: (search: Record<string, unknown>) => ({
-    category: (search.category as string | undefined) ?? undefined,
-    subcategory: (search.subcategory as string | undefined) ?? undefined,
-    mini: (search.mini as string | undefined) ?? undefined,
-    q: (search.q as string | undefined) ?? undefined,
+  validateSearch: (search: Record<string, unknown>): ProductsSearch => ({
+    category: search.category as string | undefined,
+    subcategory: search.subcategory as string | undefined,
+    mini: search.mini as string | undefined,
+    q: search.q as string | undefined,
   }),
   component: ProductsIndex,
 })
@@ -31,22 +39,22 @@ const heroSlides = [
   {
     title: '암막커튼 컬렉션',
     subtitle: '완벽한 빛 차단과 편안한 휴식',
-    image: '/images/curtain-hero-livingroom.jpg',
-  },
-  {
-    title: '쉬어커튼 컬렉션',
-    subtitle: '자연광을 담는 부드러운 감성',
-    image: '/images/curtain-room-beige.jpg',
+    image: '/images/site/products-hero-1.jpg',
   },
   {
     title: '생활암막커튼 컬렉션',
     subtitle: '내추럴한 텍스처의 완성',
-    image: '/images/curtain-room-brown.jpg',
+    image: '/images/site/products-hero-2.jpg',
+  },
+  {
+    title: '쉬어커튼 컬렉션',
+    subtitle: '자연광을 담는 부드러운 감성',
+    image: '/images/site/products-hero-3.jpg',
   },
   {
     title: '커튼 부자재 & 제작 기계',
     subtitle: '전문가의 손길을 더하는 도구',
-    image: '/images/curtain-room-blue.jpg',
+    image: '/images/site/products-hero-4.jpg',
   },
 ]
 
@@ -55,17 +63,41 @@ function ProductsIndex() {
   const navigate = Route.useNavigate()
   const [navOpen, setNavOpen] = useState(false)
 
-  const query = search.q ?? ''
+  // The search text lives in local state so typing is never interrupted —
+  // routing on every keystroke breaks Korean/Japanese/Chinese IME composition.
+  const [query, setQuery] = useState(search.q ?? '')
+
+  // The actual filtering/URL-sync value only updates after the user pauses
+  // typing for a moment, so results don't flicker on every keystroke.
+  const [debouncedQuery, setDebouncedQuery] = useState(search.q ?? '')
+
   const activeCategory = (search.category as Category | undefined) ?? 'all'
   const activeSubcategory = search.subcategory ?? null
   const activeMinicategory = search.mini ?? null
 
-  const setQuery = (value: string) => {
-    navigate({
-      search: (prev) => ({ ...prev, q: value || undefined }),
-      replace: true,
-    })
-  }
+  // Keep local state in sync if the URL's q changes from elsewhere
+  // (e.g. browser back/forward).
+  useEffect(() => {
+    setQuery(search.q ?? '')
+    setDebouncedQuery(search.q ?? '')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search.q])
+
+  // Wait for a pause in typing before updating results and syncing the URL,
+  // so search results stay bookmarkable/shareable without disrupting IME
+  // input or re-filtering mid-word.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query)
+      navigate({
+        search: (prev) => ({ ...prev, q: query || undefined }),
+        replace: true,
+        resetScroll: false,
+      })
+    }, 600)
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query])
 
   const handleSelect = (
     category: Category | 'all',
@@ -83,7 +115,7 @@ function ProductsIndex() {
   }
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
+    const q = debouncedQuery.trim().toLowerCase()
     return products.filter((product) => {
       const matchesCategory =
         activeCategory === 'all' || product.category === activeCategory
@@ -99,24 +131,27 @@ function ProductsIndex() {
         matchesCategory && matchesSubcategory && matchesMinicategory && matchesQuery
       )
     })
-  }, [query, activeCategory, activeSubcategory, activeMinicategory])
+  }, [debouncedQuery, activeCategory, activeSubcategory, activeMinicategory])
 
   return (
     <div className="min-h-screen bg-white">
-      <Header query={query} onQueryChange={setQuery} onMenuOpen={() => setNavOpen(true)} />
+      <HomeHeader />
 
       <HeroCarousel />
 
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-10 md:py-14 lg:flex lg:gap-12 lg:flex-row-reverse">
         {/* Right-side navigation / filter panel */}
         <aside className="hidden lg:block w-56 shrink-0">
-          <NavPanel
-            activeCategory={activeCategory}
-            activeSubcategory={activeSubcategory}
-            activeMinicategory={activeMinicategory}
-            onSelect={handleSelect}
-            variant="flyout"
-          />
+          <div className="lg:sticky lg:top-24">
+            <NavPanel
+              activeCategory={activeCategory}
+              activeSubcategory={activeSubcategory}
+              activeMinicategory={activeMinicategory}
+              onSelect={handleSelect}
+              variant="flyout"
+            />
+            <SearchBox query={query} onQueryChange={setQuery} />
+          </div>
         </aside>
 
         <MobileNavOverlay
@@ -130,6 +165,12 @@ function ProductsIndex() {
 
         {/* Main content */}
         <main className="flex-1 min-w-0">
+          <ProductControls
+            query={query}
+            onQueryChange={setQuery}
+            onMenuOpen={() => setNavOpen(true)}
+          />
+
           <div className="mb-10 md:mb-14">
             <p className="text-sm text-[var(--color-clay-dark)] font-medium mb-2">
               PRODUCT CATALOG
@@ -166,7 +207,7 @@ function ProductsIndex() {
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-[var(--color-linen)]">
                     <img
-                      src={product.image}
+                      src={product.images[0]}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -193,7 +234,7 @@ function ProductsIndex() {
           )}
         </main>
       </div>
-      <CatalogFooter />
+      <HomeFooter />
     </div>
   )
 }

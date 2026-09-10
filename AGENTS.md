@@ -23,8 +23,13 @@ The 열린창 (Yeollinchang) marketing site: a Korean-language company site for 
 ```
 ├── public
 │   ├── favicon.ico
-│   ├── placeholder.png            # Placeholder product image reused across the catalog
-│   └── images/                    # Hero photos + product photos
+│   ├── placeholder.png            # Shared fallback image for products without a real photo yet
+│   └── images/
+│       ├── site/                  # Site-wide/marketing images: logo, homepage hero photos, CTA banner
+│       ├── products/              # Per-product photo folders, named by product id (e.g. products/34/main.jpg)
+│       └── curtain-*.jpg, etc.    # Temporary shared stock-style photos reused across the homepage
+│                                    slideshow and a few products' `image` field until real product
+│                                    photography replaces them — not final per-product assets
 ├── src
 │   ├── data
 │   │   └── products.ts            # Product catalog: categories + product list (name, description, specs)
@@ -66,6 +71,13 @@ The 열린창 (Yeollinchang) marketing site: a Korean-language company site for 
 ### Product data
 
 All product content lives in `src/data/products.ts` as a typed array (`Product[]`) plus a `categories` list (`curtain` / `component` / `machine`). This is static display data, not user-generated data, so it is committed as code rather than stored in a database. To add a product, add an entry to the array with `id`, `category`, `image`, `shortDescription`, `description`, and `specs`.
+
+### Image folder convention
+
+- `public/images/site/` — images used by the marketing pages (home, about), not tied to any one product: logo, hero photos, CTA banner. Reference these as `/images/site/<file>`.
+- `public/images/products/<id>/` — real photos for one specific product, named by that product's numeric `id` in `products.ts` (e.g. `public/images/products/34/main.jpg`, `.../2.jpg`). To add photos for a product: create this folder if it doesn't exist, drop the files in, then reference them from that product's entry in `products.ts`.
+- `public/images/placeholder.png` — shared fallback for any product that doesn't have real photos yet.
+- Loose files directly under `public/images/` (e.g. `curtain-room-blue.jpg`) are temporary stock-style photos currently reused across the homepage slideshow and a handful of products. These are not final per-product photography — once a product gets its own real photos in `products/<id>/`, update that product's entry to point there instead.
 
 ### Search and filtering
 

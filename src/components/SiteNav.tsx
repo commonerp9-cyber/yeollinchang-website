@@ -1,4 +1,3 @@
-import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState } from 'react'
 import {
   ChevronDown,
@@ -10,48 +9,78 @@ import {
 import { categories, subcategories, minicategories } from '@/data/products'
 import type { Category } from '@/data/products'
 
-export function Header({
+export function SearchBox({
+  query,
+  onQueryChange,
+  onSubmit,
+}: {
+  query: string
+  onQueryChange: (value: string) => void
+  onSubmit?: () => void
+}) {
+  return (
+    <div className="mt-6 pt-6 border-t border-[var(--color-border)]">
+      <p className="text-xs font-semibold text-[var(--color-taupe)] mb-3 tracking-wide">
+        검색
+      </p>
+      <div className="relative">
+        <Search
+          size={18}
+          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-taupe)]"
+        />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => onQueryChange(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') onSubmit?.()
+          }}
+          placeholder="제품명을 검색해보세요"
+          className="w-full rounded-full border border-[var(--color-border)] bg-[var(--color-linen)] py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[var(--color-clay)] transition-colors"
+        />
+      </div>
+    </div>
+  )
+}
+
+export function ProductControls({
   query,
   onQueryChange,
   onMenuOpen,
+  onSubmit,
 }: {
   query: string
   onQueryChange: (value: string) => void
   onMenuOpen: () => void
+  onSubmit?: () => void
 }) {
   return (
-    <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-[var(--color-border)]">
-      <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center gap-4">
-        <Link
-          to="/"
-          className="font-display text-2xl md:text-3xl text-[var(--color-clay-dark)] shrink-0"
-        >
-          열린창 커튼
-        </Link>
-
-        <div className="flex-1 max-w-md ml-auto relative">
-          <Search
-            size={18}
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-taupe)]"
-          />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => onQueryChange(e.target.value)}
-            placeholder="제품명을 검색해보세요"
-            className="w-full rounded-full border border-[var(--color-border)] bg-[var(--color-linen)] py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[var(--color-clay)] transition-colors"
-          />
-        </div>
-
-        <button
-          onClick={onMenuOpen}
-          className="lg:hidden shrink-0 flex items-center gap-1.5 rounded-full border border-[var(--color-border)] px-4 py-2.5 text-sm text-[var(--color-ink)]"
-        >
-          <SlidersHorizontal size={16} />
-          메뉴
-        </button>
+    <div className="flex lg:hidden items-center gap-4 mb-8 md:mb-10">
+      <div className="flex-1 max-w-md relative">
+        <Search
+          size={18}
+          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-taupe)]"
+        />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => onQueryChange(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') onSubmit?.()
+          }}
+          placeholder="제품명을 검색해보세요"
+          className="w-full rounded-full border border-[var(--color-border)] bg-[var(--color-linen)] py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[var(--color-clay)] transition-colors"
+        />
       </div>
-    </header>
+
+      <button
+        onClick={onMenuOpen}
+        className="shrink-0 flex items-center gap-1.5 rounded-full bg-[var(--color-clay-dark)] px-4 py-2.5 text-sm font-bold text-white"
+      >
+        <SlidersHorizontal size={16} />
+        메뉴
+      </button>
+    </div>
   )
 }
 
@@ -157,7 +186,7 @@ export function NavPanel({
   }
 
   return (
-    <nav className="lg:sticky lg:top-24">
+    <nav>
       <p className="text-xs font-semibold text-[var(--color-taupe)] mb-4 tracking-wide">
         카테고리
       </p>

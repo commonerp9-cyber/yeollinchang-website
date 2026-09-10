@@ -3,14 +3,22 @@ import { useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import products, { categories } from '../../data/products'
 import type { Category } from '../../data/products'
-import { Header, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
-import { CatalogFooter } from '@/components/CatalogFooter'
+import { ProductGallery } from '@/components/ProductGallery'
+import { ProductControls, SearchBox, NavPanel, MobileNavOverlay } from '@/components/SiteNav'
+import { HomeHeader } from '@/components/home/HomeHeader'
+import { HomeFooter } from '@/components/home/HomeFooter'
+
+interface ProductDetailSearch {
+  category?: string
+  subcategory?: string
+  mini?: string
+}
 
 export const Route = createFileRoute('/products/$productId')({
-  validateSearch: (search: Record<string, unknown>) => ({
-    category: (search.category as string | undefined) ?? undefined,
-    subcategory: (search.subcategory as string | undefined) ?? undefined,
-    mini: (search.mini as string | undefined) ?? undefined,
+  validateSearch: (search: Record<string, unknown>): ProductDetailSearch => ({
+    category: search.category as string | undefined,
+    subcategory: search.subcategory as string | undefined,
+    mini: search.mini as string | undefined,
   }),
   component: RouteComponent,
   loader: async ({ params }) => {
@@ -57,29 +65,35 @@ function RouteComponent() {
 
   const handleQueryChange = (value: string) => {
     setQueryState(value)
+  }
+
+  const submitQuery = () => {
     navigate({
       to: '/products',
-      search: { q: value || undefined },
+      search: { q: query || undefined },
     })
   }
 
   return (
     <div className="min-h-screen bg-white">
-      <Header
-        query={query}
-        onQueryChange={handleQueryChange}
-        onMenuOpen={() => setNavOpen(true)}
-      />
+      <HomeHeader />
 
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-10 md:py-14 lg:flex lg:gap-12 lg:flex-row-reverse">
         <aside className="hidden lg:block w-56 shrink-0">
-          <NavPanel
-            activeCategory={activeCategory}
-            activeSubcategory={activeSubcategory}
-            activeMinicategory={activeMinicategory}
-            onSelect={goToCatalog}
-            variant="flyout"
-          />
+          <div className="lg:sticky lg:top-24">
+            <NavPanel
+              activeCategory={activeCategory}
+              activeSubcategory={activeSubcategory}
+              activeMinicategory={activeMinicategory}
+              onSelect={goToCatalog}
+              variant="flyout"
+            />
+            <SearchBox
+              query={query}
+              onQueryChange={handleQueryChange}
+              onSubmit={submitQuery}
+            />
+          </div>
         </aside>
 
         <MobileNavOverlay
@@ -92,6 +106,13 @@ function RouteComponent() {
         />
 
         <main className="flex-1 min-w-0">
+          <ProductControls
+            query={query}
+            onQueryChange={handleQueryChange}
+            onMenuOpen={() => setNavOpen(true)}
+            onSubmit={submitQuery}
+          />
+
           <Link
             to="/products"
             search={{
@@ -107,13 +128,7 @@ function RouteComponent() {
 
           <div className="flex flex-col md:flex-row gap-10 md:gap-14">
             <div className="w-full md:w-1/2">
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-[var(--color-linen)]">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ProductGallery images={product.images} alt={product.name} />
             </div>
 
             <div className="w-full md:w-1/2">
@@ -152,7 +167,7 @@ function RouteComponent() {
           </div>
         </main>
       </div>
-      <CatalogFooter />
+      <HomeFooter />
     </div>
   )
 }

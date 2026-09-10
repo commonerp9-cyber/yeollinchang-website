@@ -1,12 +1,24 @@
+import { HeroSlideshow } from './HeroSlideshow'
+
+const roomSlides = [
+  { src: '/images/site/hero-room-1.jpg', alt: '커튼이 설치된 거실 인테리어 1' },
+  { src: '/images/site/hero-room-2.jpg', alt: '커튼이 설치된 거실 인테리어 2' },
+  { src: '/images/site/hero-room-3.jpg', alt: '커튼이 설치된 거실 인테리어 3' },
+  { src: '/images/site/hero-room-4.jpg', alt: '커튼이 설치된 거실 인테리어 4' },
+]
+
+const machineSlides = [
+  { src: '/images/site/hero-machine.jpg', alt: '커튼 원단 재단 자동화 설비' },
+  { src: '/images/site/hero-machine2.jpg', alt: '커튼 제작 설비 현장 사진 2' },
+  { src: '/images/site/hero-machine3.jpg', alt: '커튼 제작 설비 현장 사진 3' },
+  { src: '/images/site/hero-machine4.jpg', alt: '커튼 제작 설비 현장 사진 4' },
+]
+
 export function Hero() {
   return (
     <section className="hero-split" style={{ padding: 0 }}>
       <div className="hero-left">
-        <img
-          className="hero-photo"
-          src="/images/hero-room.jpg"
-          alt="린넨 암막 커튼이 설치된 거실 인테리어"
-        />
+        <HeroSlideshow slides={roomSlides} />
         <div className="hero-overlay" aria-hidden="true" />
         <div className="hero-copy">
           <h1>
@@ -24,11 +36,7 @@ export function Hero() {
         </div>
       </div>
       <div className="hero-right">
-        <img
-          className="hero-photo"
-          src="/images/hero-machine.jpg"
-          alt="커튼 원단 재단 자동화 설비"
-        />
+        <HeroSlideshow slides={machineSlides} />
         <div className="hero-overlay-dark" aria-hidden="true" />
       </div>
     </section>

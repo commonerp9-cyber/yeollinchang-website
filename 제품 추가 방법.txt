@@ -1,0 +1,30 @@
+// before (추가 전 상태)
+images: ['/placeholder.png'],
+
+// add photo (사진추가 방법)
+public/images/products/제품번호 <<폴더 들어가기
+(1번째사진(썸네일사진)파일명) main.jpg
+(2번째사진) 2.jpg
+(3번째사진) 3.jpg
+(4번째사진) 4.jpg
+(5번째사진) 5.jpg
+images: ['public/images/products/5/main.jpg'],
+
+// or with multiple photos for the gallery — order = gallery order, first = grid thumbnail too (여러개의 사진을 추가할 때 이렇게 작성하시오)
+images: [
+  'public/images/products/제품번호/main.jpg',
+  'public/images/products/제품번호/2.jpg',
+  'public/images/products/제품번호/3.jpg',
+  'public/images/products/제품번호/4.jpg',
+],
+
+// after
+src/data/products.ts 에다가 직접 입력
+
+(예시)
+images: [
+  'public/images/products/5/main.jpg',
+  'public/images/products/5/2.jpg',
+  'public/images/products/5/3.jpg',
+  'public/images/products/5/4.jpg',
+],
