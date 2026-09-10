@@ -48,7 +48,7 @@ export function HomeHeader() {
           </li>
         </ul>
         <div className="nav-right">
-          <Link to="/" hash="cta" className="btn-pill">
+          <Link to="/" hash="cta" className="btn-pill-outline">
             B2C 미리보기
           </Link>
         </div>
