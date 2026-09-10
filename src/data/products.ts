@@ -584,7 +584,7 @@ const products: Array<Product> = [
     name: '자동 원단 커팅기',
     category: 'machine',
     subcategory: '재단기',
-    images: ['/images/products/33/main.png],
+    images: ['/images/products/33/main.png'],
     shortDescription: '정확한 치수로 원단을 자르는 자동 커팅기',
     description:
       '설정한 치수에 맞춰 원단을 정밀하게 절단하는 자동 커팅기로, 대량 제작 시 균일한 품질을 유지할 수 있습니다.',
