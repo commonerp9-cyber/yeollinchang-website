@@ -283,7 +283,7 @@ export function MobileNavOverlay({
   if (!open) return null
 
   return (
-    <div className="lg:hidden fixed inset-0 z-40 flex justify-end">
+    <div className="lg:hidden fixed inset-0 z-[60] flex justify-end">
       <div className="absolute inset-0 bg-black/30" onClick={onClose} />
       <div className="relative w-72 max-w-[85%] bg-white h-full p-6 shadow-xl overflow-y-auto">
         <button

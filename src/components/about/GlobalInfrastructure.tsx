@@ -28,7 +28,11 @@ export function GlobalInfrastructure() {
 function InfraCard({ site }: { site: (typeof infrastructureSites)[number] }) {
   return (
     <div className="infra-card">
-      <div className="flag">{site.flag}</div>
+      <img
+        className="flag-img"
+        src={`https://flagcdn.com/${site.flagCode}.svg`}
+        alt={`${site.country} 국기`}
+      />
       <h3>{site.country}</h3>
       <p className="sub">{site.subtitle}</p>
       <ul>
