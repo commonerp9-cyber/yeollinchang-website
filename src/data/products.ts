@@ -594,6 +594,7 @@ const products: Array<Product> = [
       { label: '제어', value: '터치스크린 프로그램 제어' },
       { label: '전원', value: 'AC 220V' },
     ],
+  },
   {
     id: 34,
     name: '커튼 프레스 마감기',
