@@ -89,7 +89,7 @@ export const historyEras: Array<HistoryEra> = [
 ]
 
 export interface InfrastructureSite {
-  flag: string
+  flagCode: string
   country: string
   subtitle: string
   facilities: Array<string>
@@ -97,7 +97,7 @@ export interface InfrastructureSite {
 
 export const infrastructureSites: Array<InfrastructureSite> = [
   {
-    flag: '🇰🇷',
+    flagCode: 'kr',
     country: 'South Korea',
     subtitle: '본사 · 물류센터 (HQ & Logistics)',
     facilities: [
@@ -107,7 +107,7 @@ export const infrastructureSites: Array<InfrastructureSite> = [
     ],
   },
   {
-    flag: '🇨🇳',
+    flagCode: 'cn',
     country: 'China',
     subtitle: '생산공장 네트워크 (Manufacturing Plants)',
     facilities: ['제1생산공장', '제2생산공장 (2017 설립)', '제3생산공장 (2019 설립)'],
