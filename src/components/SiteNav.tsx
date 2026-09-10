@@ -218,8 +218,14 @@ export function NavPanel({
             >
               <button
                 onClick={() => {
-                  onSelect(category.id)
-                  openSubmenu(category.id)
+                  if (isFlyout) {
+                    onSelect(category.id)
+                    openSubmenu(category.id)
+                  } else {
+                    setOpenCategory((current) =>
+                      current === category.id ? null : category.id,
+                    )
+                  }
                 }}
                 className={`w-full flex items-center justify-between gap-2 text-left px-4 py-2.5 rounded-xl text-sm transition-colors ${
                   isActiveCategory && !activeSubcategory
