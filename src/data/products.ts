@@ -537,7 +537,7 @@ const products: Array<Product> = [
     name: '정밀 커튼레일 (전동식)',
     category: 'machine',
     subcategory: '미싱기',
-    images: ['/placeholder.png'],
+    images: ['/images/products/30/main.png'],
     shortDescription: '리모컨으로 여닫는 전동식 커튼레일',
     description:
       '리모컨 및 스마트홈 연동으로 손쉽게 커튼을 여닫을 수 있는 전동식 레일입니다. 조용한 모터 구동으로 야간에도 부담 없이 사용할 수 있습니다.',
@@ -553,7 +553,7 @@ const products: Array<Product> = [
     name: '커튼 후크 & 웨이트 세트',
     category: 'machine',
     subcategory: '미싱기',
-    images: ['/placeholder.png'],
+    images: ['/images/products/31/main.png'],
     shortDescription: '단정한 라인을 잡아주는 후크와 밑단 웨이트',
     description:
       '커튼 상단 고정용 후크와 밑단이 자연스럽게 떨어지도록 무게를 잡아주는 웨이트로 구성된 부자재 세트입니다.',
@@ -568,7 +568,7 @@ const products: Array<Product> = [
     name: '산업용 재봉기 (커튼 전용)',
     category: 'machine',
     subcategory: '미싱기',
-    images: ['/placeholder.png'],
+    images: ['/images/products/32/main.png'],
     shortDescription: '두꺼운 커튼 원단도 매끄럽게, 산업용 재봉기',
     description:
       '암막 및 리넨 등 두꺼운 커튼 원단을 안정적으로 봉제할 수 있는 산업용 재봉기입니다. 균일한 스티치와 빠른 작업 속도로 제작 효율을 높여줍니다.',
@@ -584,7 +584,7 @@ const products: Array<Product> = [
     name: '자동 원단 커팅기',
     category: 'machine',
     subcategory: '재단기',
-    images: ['/placeholder.png'],
+    images: ['/images/products/33/main.png],
     shortDescription: '정확한 치수로 원단을 자르는 자동 커팅기',
     description:
       '설정한 치수에 맞춰 원단을 정밀하게 절단하는 자동 커팅기로, 대량 제작 시 균일한 품질을 유지할 수 있습니다.',
@@ -600,7 +600,7 @@ const products: Array<Product> = [
     name: '커튼 프레스 마감기',
     category: 'machine',
     subcategory: '형상기',
-    images: ['/placeholder.png'],
+    images: ['/images/products/34/main.png'],
     shortDescription: '완성도 높은 마감을 위한 스팀 프레스기',
     description:
       '봉제가 끝난 커튼의 주름과 각을 깔끔하게 정리해주는 스팀 프레스기입니다. 매장 진열 전 마무리 단계에서 널리 사용됩니다.',
@@ -616,7 +616,7 @@ const products: Array<Product> = [
     name: '커튼 전자동 검사대',
     category: 'machine',
     subcategory: '검사대',
-    images: ['/placeholder.png'],
+    images: ['/images/products/35/main.png'],
     shortDescription: '정확성을 위한 전자동 원단 검사대',
     description:
       '봉제 전 원단의 불량과 정확한 기장을 잡아주는 검사대입니다. 재단 전 세밀한 조정을 위해 사용됩니다.',
