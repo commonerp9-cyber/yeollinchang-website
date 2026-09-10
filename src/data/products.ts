@@ -21,7 +21,7 @@ export const categories: Array<{ id: Category; label: string }> = [
 export const subcategories: Record<Category, Array<string>> = {
   curtain: ['암막커튼', '생활암막커튼', '쉬어커튼'],
   component: ['씽', '핀', '브라켓', '레일', '자석끈', '기타'],
-  machine: ['미싱기', '형상기', '재단기'],
+  machine: ['미싱기', '형상기', '재단기', '검사대'],
 }
 
 // Optional third tier. A subcategory not listed here has no mini-categories.
@@ -73,11 +73,7 @@ const products: Array<Product> = [
     category: 'curtain',
     subcategory: '암막커튼',
     minicategory: '포레스트',
-    images: ['/images/products/3/main.jpg',
-		'/images/products/3/2.jpg',
-		'/images/products/3/3.jpg',
-		'/images/products/3/4.jpg',
-		'/images/products/3/5.jpg'],
+    images: ['/placeholder.png'],
     shortDescription: '빛을 완벽히 차단하는 프리미엄 암막 커튼',
     description:
       '침실과 홈시네마에 적합한 고밀도 암막 원단으로, 외부 빛과 열을 효과적으로 차단합니다.',
@@ -94,11 +90,7 @@ const products: Array<Product> = [
     category: 'curtain',
     subcategory: '암막커튼',
     minicategory: '루나',
-    images: ['/images/products/4/main.jpg',
-		'/images/products/4/2.jpg',
-		'/images/products/4/3.jpg',
-		'/images/products/4/4.jpg',
-		'/images/products/4/5.jpg'],
+    images: ['/placeholder.png'],
     shortDescription: '빛을 완벽히 차단하는 프리미엄 암막 커튼',
     description:
       '침실과 홈시네마에 적합한 고밀도 암막 원단으로, 외부 빛과 열을 효과적으로 차단합니다.',
@@ -134,11 +126,7 @@ const products: Array<Product> = [
     category: 'curtain',
     subcategory: '생활암막커튼',
     minicategory: '에어',
-    images: ['/images/products/6/main.jpg',
-		'/images/products/6/2.jpg',
-		'/images/products/6/3.jpg',
-		'/images/products/6/4.jpg',
-		'/images/products/6/5.jpg'],
+    images: ['/placeholder.png'],
     shortDescription: '자연스러운 질감의 생활 암막 커튼',
     description:
       '일상적으로 사용하기 좋은 자연스러운 텍스처의 생활 암막 커튼입니다.',
@@ -172,11 +160,7 @@ const products: Array<Product> = [
     category: 'curtain',
     subcategory: '생활암막커튼',
     minicategory: '누베아',
-    images: ['/images/products/8/main.jpg',
-		'/images/products/8/2.jpg',
-		'/images/products/8/3.jpg',
-		'/images/products/8/4.jpg',
-		'/images/products/8/5.jpg'],
+    images: ['/placeholder.png'],
     shortDescription: '자연스러운 질감의 생활 암막 커튼',
     description:
       '일상적으로 사용하기 좋은 자연스러운 텍스처의 생활 암막 커튼입니다.',
@@ -195,11 +179,7 @@ const products: Array<Product> = [
     category: 'curtain',
     subcategory: '쉬어커튼',
     minicategory: '니오',
-    images: ['/images/products/9/main.jpg',
-		'/images/products/9/2.jpg',
-		'/images/products/9/3.jpg',
-		'/images/products/9/4.jpg',
-		'/images/products/9/5.jpg'],
+    images: ['/placeholder.png'],
     shortDescription: '자연광을 부드럽게 담아내는 시어 커튼',
     description:
       '얇고 가벼운 시어 원단으로 채광을 살리면서도 은은한 프라이버시를 지켜줍니다.',
@@ -233,11 +213,7 @@ const products: Array<Product> = [
     category: 'curtain',
     subcategory: '쉬어커튼',
     minicategory: '미뉴엣',
-    images: ['/images/products/11/main.jpg',
-		'/images/products/11/2.jpg',
-		'/images/products/11/3.jpg',
-		'/images/products/11/4.jpg',
-		'/images/products/11/5.jpg'],
+    images: ['/placeholder.png'],
     shortDescription: '자연광을 부드럽게 담아내는 시어 커튼',
     description:
       '얇고 가벼운 시어 원단으로 채광을 살리면서도 은은한 프라이버시를 지켜줍니다.',

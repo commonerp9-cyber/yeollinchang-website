@@ -1,11 +1,10 @@
 import { HeroSlideshow } from './HeroSlideshow'
 
 const roomSlides = [
-  { src: '/images/site/hero-room.jpg', alt: '누베아 베이지 커튼이 설치된 거실 인테리어' },
-  { src: '/images/curtain-room-beige.jpg', alt: '베이지 톤 커튼이 설치된 거실' },
-  { src: '/images/curtain-room-blue.jpg', alt: '블루 톤 커튼이 설치된 거실' },
-  { src: '/images/curtain-room-brown.jpg', alt: '브라운 톤 커튼이 설치된 거실' },
-  { src: '/images/curtain-hero-livingroom.jpg', alt: '커튼이 설치된 거실 전경' },
+  { src: '/images/site/hero-room-1.jpg', alt: '커튼이 설치된 거실 인테리어 1' },
+  { src: '/images/site/hero-room-2.jpg', alt: '커튼이 설치된 거실 인테리어 2' },
+  { src: '/images/site/hero-room-3.jpg', alt: '커튼이 설치된 거실 인테리어 3' },
+  { src: '/images/site/hero-room-4.jpg', alt: '커튼이 설치된 거실 인테리어 4' },
 ]
 
 const machineSlides = [

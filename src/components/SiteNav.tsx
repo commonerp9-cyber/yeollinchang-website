@@ -75,7 +75,7 @@ export function ProductControls({
 
       <button
         onClick={onMenuOpen}
-        className="shrink-0 flex items-center gap-1.5 rounded-full border border-[var(--color-border)] px-4 py-2.5 text-sm text-[var(--color-ink)]"
+        className="shrink-0 flex items-center gap-1.5 rounded-full bg-[var(--color-clay-dark)] px-4 py-2.5 text-sm font-bold text-white"
       >
         <SlidersHorizontal size={16} />
         메뉴
